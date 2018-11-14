@@ -68,7 +68,7 @@ class Block<T : Tx> {
 
         val tree = merkleTree()
         val root = tree[tree.size - 1]
-        return root == this.merkleRoot
+        return root.equals(this.merkleRoot,true)
 
     }
 

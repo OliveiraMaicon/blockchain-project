@@ -14,7 +14,7 @@ class SimpleChainTest {
 
         chain1.add(Transaction("A")).add(Transaction("B")).add(Transaction("C"))
 
-        val chain2 = chain1.Clone()
+        val chain2 = chain1.clone()
 
         chain1.add(Transaction("D"))
 
@@ -33,7 +33,7 @@ class SimpleChainTest {
         assertEquals(chain1.blockChainHash(), chain2.blockChainHash())
 
         println("Current Chain Head Transactions: ")
-        for (block in chain1.getChain()) {
+        for (block in chain1.chain) {
             println(block.previousHash)
             for (tx in block.transactions) {
                 println("\t" + tx)
@@ -64,7 +64,7 @@ class SimpleChainTest {
         // get a block in chain
         val block = chain1.head
 
-        println("Merkle Hash tree :" + block!!.merkleTree())
+        println("Merkle Hash tree :" + block.merkleTree())
 
         // get a transaction from block
         val tx = block.transactions[0]
@@ -96,8 +96,8 @@ class SimpleChainTest {
             miner.mine(Transaction("" + i))
         }
 
-        println("Number of Blocks Mined = " + chain.getChain().size)
-        assertTrue(chain.getChain().size == 3)
+        println("Number of Blocks Mined = " + chain.chain.size)
+        assertTrue(chain.chain.size == 3)
 
     }
 
@@ -114,7 +114,7 @@ class SimpleChainTest {
         println(String.format("Chain is Valid: %s", chain.validate()))
 
         // get second block from chain and add a tx..
-        val block = chain.getChain()[1]
+        val block = chain.chain[1]
         val tx = Transaction("X")
         block.add(tx)
 

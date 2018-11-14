@@ -3,16 +3,23 @@ package br.com.blockchain.project.chain
 
 import br.com.blockchain.project.helpers.SHA256
 
-class Transaction(var value: String) : Tx {
+class Transaction : Tx {
 
-    private var hash: String = SHA256.generateHash(value)
+
+    private var hash: String
     // new value need to recalc hash
 
+     var value: String = ""
+         set(value) {
+             this.hash = SHA256.generateHash(value)
+        }
 
-    /* var value: String? = null
-        set(value) {
+    constructor()
 
-        }*/
+    constructor(value: String) : this(){
+        this.hash = SHA256.generateHash(value)
+        this.value = value
+    }
 
     override fun hash(): String {
         return hash

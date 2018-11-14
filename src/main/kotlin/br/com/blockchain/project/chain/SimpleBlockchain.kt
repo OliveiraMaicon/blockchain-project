@@ -5,12 +5,12 @@ import java.util.function.Consumer
 import java.util.function.Predicate
 
 class SimpleBlockchain<T : Tx>() {
-    private var chain: MutableList<Block<T>> = ArrayList()
+    var chain: MutableList<Block<T>> = ArrayList()
 
-    val head: Block<T>?
+    val head: Block<T>
         get() {
 
-            val result: Block<T>?
+            val result: Block<T>
             if (this.chain.size > 0) {
                 result = this.chain[this.chain.size - 1]
             } else {
@@ -29,6 +29,7 @@ class SimpleBlockchain<T : Tx>() {
     constructor(blocks: MutableList<Block<T>>) : this() {
         chain = blocks
     }
+
 
     fun addAndValidateBlock(block: Block<T>) {
 
@@ -89,11 +90,11 @@ class SimpleBlockchain<T : Tx>() {
         }
 
         // See if head block is full
-        if (head!!.transactions.size >= BLOCK_SIZE) {
+        if (head.transactions.size >= BLOCK_SIZE) {
             this.chain.add(newBlock())
         }
 
-        head!!.add(item)
+        head.add(item)
 
         return this
     }
@@ -106,18 +107,10 @@ class SimpleBlockchain<T : Tx>() {
         }
     }*/
 
-    fun Clone(): SimpleBlockchain<T> {
+    fun clone(): SimpleBlockchain<T> {
         val clonedChain = ArrayList<Block<T>>()
         chain.forEach{clonedChain.add(it.Clone())}
         return SimpleBlockchain(clonedChain)
-    }
-
-    fun getChain(): List<Block<T>> {
-        return chain
-    }
-
-    fun setChain(chain: MutableList<Block<T>>) {
-        this.chain = chain
     }
 
     /* Gets the root hash. */

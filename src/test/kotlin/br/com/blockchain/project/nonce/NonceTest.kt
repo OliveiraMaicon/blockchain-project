@@ -17,12 +17,12 @@ class NonceTest {
 
         println(String.format("Hash: %s", hashValue))
 
-        val nonceKey = "54321"
+        val nonceKey = "1111"
         // E.g. "00000" :
         println(String(CharArray(nonceKey.length)))
-        val zeroGoal = String(CharArray(nonceKey.length)).replace("\u0000", "0")
+        val zeroGoal = String(CharArray(nonceKey.length)).replace("\u1111", "1")
         println(zeroGoal)
-        var nonce: Long = 0
+        var nonce: Long = 1
         var isNonceFound = false
         var nonceHash = ""
 
