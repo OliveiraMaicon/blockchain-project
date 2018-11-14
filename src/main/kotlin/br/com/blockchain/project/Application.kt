@@ -2,20 +2,17 @@ package br.com.blockchain.project
 
 import br.com.blockchain.project.domain.model.Block
 import br.com.blockchain.project.infraestructure.HashUtils
+import com.google.gson.GsonBuilder
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
-import com.google.gson.GsonBuilder
-import sun.plugin2.util.PojoUtil.toJson
-import java.util.ArrayList
-
-
+import java.util.*
 
 
 @SpringBootApplication
 class Application {
     companion object {
         val blockchain = ArrayList<Block>()
-        var difficulty: Int = 5
+        var difficulty: Int = 0
 
         @JvmStatic
         fun addBlock(newBlock: Block) {
@@ -27,24 +24,24 @@ class Application {
         fun main(args: Array<String>) {
             runApplication<Application>(*args)
 
-            /* val genesisBlock = Block("Hi im the first block", "0")
+             val genesisBlock = Block("Hi im the first block", "0")
              println("Hash for block 1 : " + genesisBlock.hash)
 
              val secondBlock = Block("Yo im the second block", genesisBlock.hash)
              println("Hash for block 2 : " + secondBlock.hash)
 
              val thirdBlock = Block("Hey im the third block", secondBlock.hash)
-             println("Hash for block 3 : " + thirdBlock.hash)*/
+             println("Hash for block 3 : " + thirdBlock.hash)
 
             //add our blocks to the blockchain ArrayList:
-            /*blockchain.add(Block("Hi im the first block", "0"))
+            blockchain.add(Block("Hi im the first block", "0"))
             blockchain.add(Block("Yo im the second block", blockchain[blockchain.size - 1].hash))
             blockchain.add(Block("Hey im the third block", blockchain[blockchain.size - 1].hash))
 
             val blockchainJson = GsonBuilder().setPrettyPrinting().create().toJson(blockchain)
             println(blockchainJson)
-            println(isChainValid())*/
-            var newBlock = Block("Hi im the first block", "0")
+            println(isChainValid())
+            /*var newBlock = Block("Hi im the first block", "0")
             println("Trying to Mine block 1... ")
             newBlock.mineBlock(difficulty)
             blockchain.add(newBlock)
@@ -61,11 +58,11 @@ class Application {
             val blockchainJson = HashUtils.getJson(blockchain)
             println("\nThe block chain: ")
             println(blockchainJson)
-
+*/
         }
 
 
-        fun isChainValid(): Boolean {
+        private fun isChainValid(): Boolean {
             var currentBlock: Block
             var previousBlock: Block
 

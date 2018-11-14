@@ -55,10 +55,9 @@ class SimpleBlockchain<T : Tx>() {
         var previousHash = chain[0].hash
         for (block in chain) {
             val currentHash = block.hash
-            if (currentHash != previousHash) {
-                return false
-            }
 
+            if (currentHash != previousHash)
+                return false
             previousHash = currentHash
 
         }
