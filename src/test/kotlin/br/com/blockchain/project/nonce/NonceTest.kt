@@ -4,10 +4,11 @@ import br.com.blockchain.project.helpers.SHA256
 import org.junit.Test
 
 import org.junit.Assert.assertTrue
+import org.junit.Ignore
 
 class NonceTest {
 
-    @Test
+    @Ignore
     fun test() {
         val message = "Keyhole Software"
 
@@ -17,7 +18,7 @@ class NonceTest {
 
         println(String.format("Hash: %s", hashValue))
 
-        val nonceKey = "1111"
+        val nonceKey = "00000"
         // E.g. "00000" :
         println(String(CharArray(nonceKey.length)))
         val zeroGoal = String(CharArray(nonceKey.length)).replace("\u1111", "1")
