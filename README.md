@@ -1,4 +1,1 @@
-# Blockchain sandbox
-
-[![CircleCI](https://circleci.com/bb/mikon182/event-service.svg?style=shield)](https://circleci.com/bb/mikon182/event-service)
-
+# Blockchain sandbox  [![CircleCI](https://circleci.com/gh/OliveiraMaicon/blockchain-project.svg?style=svg)](https://circleci.com/gh/OliveiraMaicon/blockchain-project)
